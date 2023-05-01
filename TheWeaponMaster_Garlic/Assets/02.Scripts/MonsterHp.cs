@@ -10,7 +10,7 @@ public class MonsterHp : MonoBehaviour
     GameObject monster;
     void Start()
     {
-        monster = GetComponent<GameObject>();
+        monster = this.gameObject;
         monsterType = monster.GetComponent<Monster001Ctrl>().monsterType;
 
         if(monsterType == 1 )
@@ -19,10 +19,9 @@ public class MonsterHp : MonoBehaviour
         }
     }
 
-    void GetDmg(int dmg)
+    public void GetDmg(int dmg)
     {
         monsterHp -= dmg;
-
         if (monsterHp <= 0)
         {
             Destroy(this.gameObject);
