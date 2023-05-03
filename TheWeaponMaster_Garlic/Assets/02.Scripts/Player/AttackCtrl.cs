@@ -7,23 +7,17 @@ public class AttackCtrl : MonoBehaviour
     public GameObject Monster;
     public GameObject hand;
     public float maxRange;
-    public int weponType = 0;
     public Ray ray;
     private void Start()
     {
     }
     private void OnDrawGizmos()
     {
-
         Debug.DrawLine(ray.origin, ray.direction * maxRange, Color.red);
         //화면에 레이를 보여줌
     }
     void Update()
     {
-        if(weponType == 0)
-        {
-            maxRange = 30.0f;
-        }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -36,7 +30,7 @@ public class AttackCtrl : MonoBehaviour
             {
                 if (hit.collider.tag == "Monster")
                 {
-                    hit.collider.gameObject.GetComponent<MonsterHp>().GetDmg(1);
+                    hit.collider.gameObject.GetComponent<MonsterController>().GetDmg(1);
                 }
                 Debug.Log(hit.collider.name);
                 //오브젝트 이름 출력
