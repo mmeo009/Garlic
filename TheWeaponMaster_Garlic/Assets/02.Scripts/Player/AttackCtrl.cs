@@ -10,21 +10,27 @@ public class AttackCtrl : MonoBehaviour
     public Ray ray;
     private void Start()
     {
-    }
-    private void OnDrawGizmos()
-    {
-        Debug.DrawLine(ray.origin, ray.direction * maxRange, Color.red);
-        //화면에 레이를 보여줌
+        maxRange = 10.0f;
     }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Ray cast = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+
+            if (Physics.Raycast(cast, out hit))
+            {
+                if (hit.collider.tag == "Monster")
+                {
+                    hit.collider.gameObject.GetComponent<MonsterController>().GetDmg(1);
+                }
+                Debug.Log(hit.collider.name);
+            }
+            /*            
             ray = new Ray();
             ray.origin = hand.transform.position;
             ray.direction = hand.transform.TransformDirection(Vector3.forward);
-
             if (Physics.Raycast(ray.origin,ray.direction,out hit,maxRange))
             //Rast가 충돌된것을 hit로 돌려준다.
             {
@@ -35,6 +41,7 @@ public class AttackCtrl : MonoBehaviour
                 Debug.Log(hit.collider.name);
                 //오브젝트 이름 출력
             }
+            */
         }
     }
 }

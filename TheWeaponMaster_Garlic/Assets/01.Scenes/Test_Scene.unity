@@ -644,7 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078623067}
   m_Layer: 0
-  m_Name: Pivot
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Monster: {fileID: 0}
-  hand: {fileID: 1859127735}
+  hand: {fileID: 61490238}
   maxRange: 0
 --- !u!1 &1859127735
 GameObject:
