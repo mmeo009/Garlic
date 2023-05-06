@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public enum WeponType
+    {
+        None,
+        Gun,
+        Sword,
+        Dagger
+    }
     void Start()
     {
         
