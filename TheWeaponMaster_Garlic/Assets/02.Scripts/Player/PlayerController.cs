@@ -8,7 +8,9 @@ public class PlayerController : GeneralAnimation
 
     float h, v;
     Vector3 moveDir;
-    float dashTime = 30.0f;
+    [SerializeField]
+    float dashTime = 20.0f;
+    [SerializeField]
     float nowSpeed;
     private void Start()
     {
@@ -25,15 +27,19 @@ public class PlayerController : GeneralAnimation
 
         moveDir = (Vector3.forward * v) + (Vector3.right * h);
 
-        if(Input.GetKey(KeyCode.LeftShift)) 
+        if (Input.GetKey(KeyCode.LeftShift)) 
         {
-            if(dashTime > 0) 
+            if (dashTime > 0)
             {
                 nowSpeed = Stats.DashSpeed;
                 dashTime -= Time.deltaTime;
             }
+            else
+            {
+                nowSpeed = Stats.MoveSpeed;
+            }
         }
-        if (dashTime < 30.0f)
+        if (dashTime < 20.0f)
         {
             if (!Input.GetKey(KeyCode.LeftShift))
             {
@@ -41,6 +47,11 @@ public class PlayerController : GeneralAnimation
                 dashTime += Time.deltaTime;
             }
         }
-        transform.Translate(moveDir.normalized * Stats.MoveSpeed * Time.deltaTime, Space.Self);
+        if(dashTime < 0)
+        {
+            dashTime = 0;
+        }
+        
+        transform.Translate(moveDir.normalized * nowSpeed * Time.deltaTime, Space.Self);
     }
 }
