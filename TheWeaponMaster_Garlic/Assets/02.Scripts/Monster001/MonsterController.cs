@@ -19,11 +19,6 @@ public class MonsterController : GeneralAnimation
         }
         Debug.Log(Stats.HP);
     }
-    public void AttackCoolDown()
-    {
-
-    }
-
 }
 
 
