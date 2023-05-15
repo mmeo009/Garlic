@@ -1,6 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 
 public class Mon001Ctrl : MonsterController
 {
@@ -10,8 +10,7 @@ public class Mon001Ctrl : MonsterController
 
     public float time = 4.0f;
 
-    [SerializeField]
-    private bool handsAreMoved;
+    public bool areHandsMoves;
 
     public GameObject me;
     public GameObject hands;
@@ -22,11 +21,10 @@ public class Mon001Ctrl : MonsterController
 
     public Vector3 targetDiraction;
 
-    Tweener handmove;
 
     void Start()
     {
-        StatSetting(40, 1, 5.0f, 7.0f, 5.0f, 1);
+        StatSetting(7, 1, 5.0f, 7.0f, 5.0f, 1);
         Debug.Log(Stats.HP);
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -42,7 +40,7 @@ public class Mon001Ctrl : MonsterController
 
             Quaternion targetRotation = Quaternion.LookRotation(targetDiraction);
 
-            if (handsAreMoved == false)
+            if (areHandsMoves == false)
             {
                 if (Vector3.Distance(player.position, transform.position) > 5)
                 //Vecter3.Distance (거리를 알려주는 함수)
@@ -60,26 +58,26 @@ public class Mon001Ctrl : MonsterController
     {
         if (Vector3.Distance(player.position, transform.position) <= 5)
         {
-            if (handsAreMoved == false)
+            if (areHandsMoves == false)
             {
 
-                handsAreMoved = true;
+                areHandsMoves = true;
                 StartAttack();
             }
         }
     }
     void StartAttack()
     {
-        targetDiraction = (player.position - transform.position).normalized;
-        handmove = hands.transform.DOMove(targetDiraction, 3);
-        handmove.OnComplete(HandBack).Restart();
+        Vector3 vel = Vector3.zero;
+        hands.transform.DOJump(player.position, 5.0f, 1, 1.0f).OnComplete(HandBack);
+
     }
     void HandBack()
     {
-        hands.transform.DOMove(me.transform.position, 3).OnComplete(EndAttack);
+        hands.transform.DOMove(me.transform.position, 3).OnComplete(EndAttack).SetDelay(0.3f);
     }
     void EndAttack()
     {
-        handsAreMoved = false;
+        areHandsMoves = false;
     }
 }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class PlayerController : GeneralAnimation
@@ -27,7 +24,7 @@ public class PlayerController : GeneralAnimation
 
         moveDir = (Vector3.forward * v) + (Vector3.right * h);
 
-        if (Input.GetKey(KeyCode.LeftShift)) 
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             if (dashTime > 0)
             {
@@ -47,11 +44,21 @@ public class PlayerController : GeneralAnimation
                 dashTime += Time.deltaTime;
             }
         }
-        if(dashTime < 0)
+        if (dashTime < 0)
         {
             dashTime = 0;
         }
-        
+
         transform.Translate(moveDir.normalized * nowSpeed * Time.deltaTime, Space.Self);
+    }
+
+    public void GetDMG(int dmg)
+    {
+        Stats.HP -= dmg;
+        if (Stats.HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        Debug.Log(Stats.HP);
     }
 }
