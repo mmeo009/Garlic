@@ -8,8 +8,11 @@ public class AttackCtrl : MonoBehaviour
     public GameObject hand;
     public float maxRange;
     public Ray ray;
+    public AudioClip fire1Sfx;
+    new AudioSource audio;
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         maxRange = 10.0f;
     }
     void Update()
@@ -18,7 +21,7 @@ public class AttackCtrl : MonoBehaviour
         {
             Ray cast = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            audio.PlayOneShot(fire1Sfx, 3.0f);
             if (Physics.Raycast(cast, out hit))
             {
                 if (hit.collider.tag == "Monster")
