@@ -336,6 +336,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d761fda74825dfd498847cde3ce17be1, type: 3}
   m_PrefabInstance: {fileID: 1434432114}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &708632924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d761fda74825dfd498847cde3ce17be1, type: 3}
+  m_PrefabInstance: {fileID: 1434432114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &899313078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,7 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e19f02c1d984f9b4196834f65030b635, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e19f02c1d984f9b4196834f65030b635, type: 3}
@@ -538,6 +543,11 @@ Transform:
   m_Father: {fileID: 1767071086}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1160738138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e19f02c1d984f9b4196834f65030b635, type: 3}
+  m_PrefabInstance: {fileID: 899313078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1260051526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -664,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d761fda74825dfd498847cde3ce17be1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d761fda74825dfd498847cde3ce17be1, type: 3}
@@ -893,8 +903,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Monster: {fileID: 0}
   hand: {fileID: 61490238}
+  type1: {fileID: 1160738138}
+  type2: {fileID: 708632924}
+  viewCamera: {fileID: 61490240}
   maxRange: 0
   fire1Sfx: {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
+  targetPosition: {x: 0, y: 0, z: 0}
+  isAttack: 0
+  type2P: {x: 0, y: 0, z: 0}
 --- !u!54 &1767071088
 Rigidbody:
   m_ObjectHideFlags: 0
