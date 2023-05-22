@@ -18,6 +18,7 @@ public class AttackCtrl : MonoBehaviour
     public AudioClip fire1Sfx;
     new AudioSource audio;
     public Vector3 targetPosition;
+    public Vector3 targetPosition2;
     public bool isAttack;
     public Vector3 type2P;
     public enum WeponType
@@ -35,12 +36,13 @@ public class AttackCtrl : MonoBehaviour
     }
     void Update()
     {
-        type2P = new Vector3(hand.transform.position.x /*+ 1.07f*/, hand.transform.position.y /*-0.64f*/, hand.transform.position.z /*+0.76f*/);
+        type2P = new Vector3(hand.transform.position.x, hand.transform.position.y , hand.transform.position.z);
         {
 
         };
         Vector3 mousePos = viewCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, viewCamera.transform.position.y));
         targetPosition = new Vector3(mousePos.x, mousePos.y, mousePos.z);
+        targetPosition2 = new Vector3(mousePos.x, mousePos.y - 2, mousePos.z);
         if (Input.GetMouseButtonDown(0))
         {
             if (type == WeponType.Gun)
@@ -62,6 +64,7 @@ public class AttackCtrl : MonoBehaviour
                 if (isAttack == false)
                 {
                     SwordAttack();
+                    isAttack = true;
                 }
             }
             /*            
@@ -90,21 +93,23 @@ public class AttackCtrl : MonoBehaviour
             type1.gameObject.SetActive(false);
             type2.gameObject.SetActive(true);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
+/*        if(Input.GetKeyDown(KeyCode.Alpha3))
         {
             type= WeponType.Dagger;
-        }
+        }*/
     }
 
     void SwordAttack()
     {
-        type2.transform.DOJump(targetPosition, 1.0f, 2, 1.0f).OnComplete(HandBack);
+        type2.transform.DOJump(targetPosition, 1.0f, 2, 0.3f).OnComplete(HandBack);
     }
     void HandBack()
     {
-        type2.transform.DOMove(type2P, 1).OnComplete(SwordEndAttack).SetDelay(0.3f);
+        type2.transform.DOMove(hand.transform.position, 0.1f).OnComplete(SwordEndAttack);
     }
     void SwordEndAttack() 
-    { }
+    {
+        isAttack = false;
+    }
 
 }
