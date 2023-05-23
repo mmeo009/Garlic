@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 public class Mon001Ctrl : MonsterController
 {
 
-    public float speed = 3;
     public float rotationSpeed = 10;
 
     public float time = 4.0f;
@@ -24,9 +23,10 @@ public class Mon001Ctrl : MonsterController
 
     void Start()
     {
-        StatSetting(7, 1, 5.0f, 7.0f, 5.0f, 1);
+        StatSetting(7, 1, 3.0f, 7.0f, 5.0f, 1);
         Debug.Log(Stats.HP);
         rb = GetComponent<Rigidbody>();
+        me = this.gameObject;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sequenceLoop = DOTween.Sequence();
     }
@@ -46,7 +46,7 @@ public class Mon001Ctrl : MonsterController
                 //Vecter3.Distance (거리를 알려주는 함수)
                 {
                     Vector3 direction = (player.position - transform.position).normalized;
-                    rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+                    rb.MovePosition(transform.position + direction * Stats.MoveSpeed * Time.deltaTime);
                 }
                 
             }

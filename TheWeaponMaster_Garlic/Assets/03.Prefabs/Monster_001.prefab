@@ -387,12 +387,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9c2c22993d208438c3145e344db683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   rotationSpeed: 10
   time: 4
   areHandsMoves: 0
-  me: {fileID: 5503452220952086447}
-  hands: {fileID: 5503452220427099636}
+  me: {fileID: 0}
+  hands: {fileID: 0}
   player: {fileID: 0}
   rb: {fileID: 0}
   targetDiraction: {x: 0, y: 0, z: 0}
