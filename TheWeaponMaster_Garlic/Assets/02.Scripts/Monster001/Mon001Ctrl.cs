@@ -1,14 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Mon001Ctrl : MonsterController
 {
-
-    public float rotationSpeed = 10;
-
     public float time = 4.0f;
-
     public bool areHandsMoves;
 
     public GameObject me;
@@ -23,7 +18,7 @@ public class Mon001Ctrl : MonsterController
 
     void Start()
     {
-        StatSetting(7, 1, 3.0f, 7.0f, 5.0f, 1);
+        StatSetting(7, 20.0f, 10.0f, 0.0f, 1);
         Debug.Log(Stats.HP);
         rb = GetComponent<Rigidbody>();
         me = this.gameObject;
@@ -48,9 +43,9 @@ public class Mon001Ctrl : MonsterController
                     Vector3 direction = (player.position - transform.position).normalized;
                     rb.MovePosition(transform.position + direction * Stats.MoveSpeed * Time.deltaTime);
                 }
-                
+
             }
-            me.transform.rotation = Quaternion.Lerp(me.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            me.transform.rotation = Quaternion.Lerp(me.transform.rotation, targetRotation, Stats.Stat2 * Time.deltaTime);
         }
     }
 
@@ -65,6 +60,11 @@ public class Mon001Ctrl : MonsterController
                 StartAttack();
             }
         }
+        if (Vector3.Distance(hands.transform.position, transform.position) >= 1)
+        {
+            if (areHandsMoves == false)
+                HandQuickBack();
+        }
     }
     void StartAttack()
     {
@@ -75,6 +75,10 @@ public class Mon001Ctrl : MonsterController
     void HandBack()
     {
         hands.transform.DOMove(me.transform.position, 3).OnComplete(EndAttack).SetDelay(0.3f);
+    }
+    void HandQuickBack()
+    {
+        hands.transform.DOMove(me.transform.position, 1).OnComplete(EndAttack).SetDelay(0.3f);
     }
     void EndAttack()
     {

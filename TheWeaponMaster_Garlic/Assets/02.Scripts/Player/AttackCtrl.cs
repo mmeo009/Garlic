@@ -5,21 +5,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class AttackCtrl : MonoBehaviour
+public class AttackCtrl : PlayerController
 {
-    public GameObject Monster;
-    public GameObject hand;
-    public GameObject type1;
-    public GameObject type2;
+    public GameObject monster, hand, type1, type2;
     public Camera viewCamera;
 
     public float maxRange;
+    public int dmg = 2;
+    public bool isAttack;
     public Ray ray;
     public AudioClip fire1Sfx;
     new AudioSource audio;
     public Vector3 targetPosition;
     public Vector3 targetPosition2;
-    public bool isAttack;
     public Vector3 type2P;
     public enum WeponType
     {
@@ -54,7 +52,7 @@ public class AttackCtrl : MonoBehaviour
                 {
                     if (hit.collider.tag == "Monster")
                     {
-                        hit.collider.gameObject.GetComponent<MonsterController>().GetDmg(1);
+                        hit.collider.gameObject.GetComponent<MonsterController>().GetDmg(dmg/2);
                     }
                     Debug.Log(hit.collider.name);
                 }

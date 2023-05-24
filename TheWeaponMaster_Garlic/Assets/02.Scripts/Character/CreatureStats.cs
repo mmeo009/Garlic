@@ -7,22 +7,20 @@ public class CreatureStats : MonoBehaviour
 
     protected BaisicStats Stats;
 
-    protected virtual void StatSetting(int hp, int atk, float moveSpeed, float dashSpeed, float jumpForce, int creatureType)
+    protected virtual void StatSetting(int hp, float moveSpeed, float stat2, float stat3, int creatureType)
     {
         Stats.HP = hp;
-        Stats.ATK = atk;
         Stats.MoveSpeed = moveSpeed;
-        Stats.DashSpeed = dashSpeed;
-        Stats.JumpForce = jumpForce;
+        Stats.Stat2 = stat2;
+        Stats.Stat3 = stat3;
         Stats.CreatureType = creatureType;
     }
     protected struct BaisicStats
     {
         public int HP;
-        public int ATK;
         public float MoveSpeed;
-        public float DashSpeed;
-        public float JumpForce;
+        public float Stat2;
+        public float Stat3;
         public int CreatureType;
     }
 }

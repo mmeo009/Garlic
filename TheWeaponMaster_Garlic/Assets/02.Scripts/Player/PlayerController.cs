@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerController : GeneralAnimation
+public class PlayerController : CreatureStats
 {
-
+    public GameObject cam;
     float h, v;
     Vector3 moveDir;
     [SerializeField]
@@ -11,7 +11,7 @@ public class PlayerController : GeneralAnimation
     float nowSpeed;
     private void Start()
     {
-        StatSetting(5, 5, 5.0f, 10.0f, 5.0f, 0);
+        StatSetting(5, 5.0f, 10.0f, 5.0f, 0);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -28,7 +28,7 @@ public class PlayerController : GeneralAnimation
         {
             if (dashTime > 0)
             {
-                nowSpeed = Stats.DashSpeed;
+                nowSpeed = Stats.Stat2;
                 dashTime -= Time.deltaTime;
             }
             else
@@ -60,5 +60,6 @@ public class PlayerController : GeneralAnimation
             Destroy(this.gameObject);
         }
         Debug.Log(Stats.HP);
+        //cam.GetComponent<CamController>().Knock(dmg);
     }
 }

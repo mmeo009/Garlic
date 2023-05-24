@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class MonsterController : GeneralAnimation
+public class MonsterController : CreatureStats
 {
     private void Start()
     {

@@ -9,7 +9,7 @@ public class CamController : MonoBehaviour
     [SerializeField] private Transform cameraLocation;
 
 
-    float xRotation = 0f;
+    float xRotation = 90f;
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class CamController : MonoBehaviour
     public void Knock(float power)
     {
         Vector3 dir = Random.insideUnitCircle * power;
-        dir.z = Random.Range(-1f, 1f) * power;
+        dir.z = Random.Range(-10f, 10f) * power;
         cameraLocation.localEulerAngles += dir;
     }
 }
