@@ -1,9 +1,5 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class AttackCtrl : PlayerController
 {
@@ -34,7 +30,7 @@ public class AttackCtrl : PlayerController
     }
     void Update()
     {
-        type2P = new Vector3(hand.transform.position.x, hand.transform.position.y , hand.transform.position.z);
+        type2P = new Vector3(hand.transform.position.x, hand.transform.position.y, hand.transform.position.z);
         {
 
         };
@@ -52,12 +48,12 @@ public class AttackCtrl : PlayerController
                 {
                     if (hit.collider.tag == "Monster")
                     {
-                        hit.collider.gameObject.GetComponent<MonsterController>().GetDmg(dmg/2);
+                        hit.collider.gameObject.GetComponent<MonsterController>().GetDmg(dmg / 2);
                     }
                     Debug.Log(hit.collider.name);
                 }
             }
-            if(type == WeponType.Sword)
+            if (type == WeponType.Sword)
             {
                 if (isAttack == false)
                 {
@@ -79,22 +75,22 @@ public class AttackCtrl : PlayerController
             }
             */
         }
-        if(Input.GetKeyDown(KeyCode.Alpha1)) 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             type = WeponType.Gun;
             type1.gameObject.SetActive(true);
             type2.gameObject.SetActive(false);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            type= WeponType.Sword;
+            type = WeponType.Sword;
             type1.gameObject.SetActive(false);
             type2.gameObject.SetActive(true);
         }
-/*        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            type= WeponType.Dagger;
-        }*/
+        /*        if(Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    type= WeponType.Dagger;
+                }*/
     }
 
     void SwordAttack()
@@ -105,9 +101,18 @@ public class AttackCtrl : PlayerController
     {
         type2.transform.DOMove(hand.transform.position, 0.1f).OnComplete(SwordEndAttack);
     }
-    void SwordEndAttack() 
+    void SwordEndAttack()
     {
         isAttack = false;
+    }
+
+    public void StatPlus(int type, int p)
+    {
+        if (type == 1)
+        {
+            dmg += p;
+            Debug.Log(dmg);
+        }
     }
 
 }

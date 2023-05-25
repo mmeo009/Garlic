@@ -9,6 +9,8 @@ public class PlayerController : CreatureStats
     float dashTime = 20.0f;
     [SerializeField]
     float nowSpeed;
+    [SerializeField]
+    bool isDash = false;
     private void Start()
     {
         StatSetting(5, 5.0f, 10.0f, 5.0f, 0);
@@ -30,10 +32,12 @@ public class PlayerController : CreatureStats
             {
                 nowSpeed = Stats.Stat2;
                 dashTime -= Time.deltaTime;
+                isDash = true;
             }
             else
             {
                 nowSpeed = Stats.MoveSpeed;
+                isDash= false;
             }
         }
         if (dashTime < 20.0f)
@@ -61,5 +65,26 @@ public class PlayerController : CreatureStats
         }
         Debug.Log(Stats.HP);
         //cam.GetComponent<CamController>().Knock(dmg);
+    }
+    public void StatPlus(int type, float p, int hp)
+    {
+        if (type == 2)
+        {
+            Stats.MoveSpeed += p;
+            Stats.Stat2 += p;
+            if (isDash == false)
+            {
+                nowSpeed = Stats.MoveSpeed;
+            }
+            else if (isDash)
+            {
+                nowSpeed = Stats.Stat2;
+            }
+        }
+        else if (type == 3)
+        {
+            Stats.HP += hp;
+            Debug.Log(Stats.HP);
+        }
     }
 }

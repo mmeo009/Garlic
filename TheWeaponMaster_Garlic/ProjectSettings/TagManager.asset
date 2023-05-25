@@ -8,6 +8,9 @@ TagManager:
   - Ground
   - L_Hand
   - R_Hand
+  - Item_1
+  - Item_2
+  - Item_3
   layers:
   - Default
   - TransparentFX
