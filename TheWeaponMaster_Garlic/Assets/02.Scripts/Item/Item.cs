@@ -9,22 +9,18 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        if (this.gameObject.tag == "Item_1")
+
+        switch(this.gameObject.tag)
         {
+            case "Item_1":
             itemType = 1;
-        }
-        else if (this.gameObject.tag == "Item_2")
-        {
+            break;
+            case "Item_2":
             itemType = 2;
-        }
-        else if (this.gameObject.tag == "Item_3")
-        {
-            itemType = 3;
-        }
-        else
-        {
-            itemType = 4;
-            Debug.Log("뭔가 이상하다!");
+            break;
+            case "Item_3":
+            itemType =3;
+            break;
         }
     }
     void OnTriggerEnter(Collider other)
