@@ -5,12 +5,12 @@ public class PlayerController : CreatureStats
     public GameObject cam;
     float h, v;
     Vector3 moveDir;
-    [SerializeField]
-    float dashTime = 20.0f;
+    public float dashTime = 20.0f;
     [SerializeField]
     float nowSpeed;
     [SerializeField]
     bool isDash = false;
+    public int maxHp = 5;
     private void Start()
     {
         StatSetting(5, 5.0f, 10.0f, 5.0f, 0);
@@ -83,6 +83,7 @@ public class PlayerController : CreatureStats
         }
         else if (type == 3)
         {
+            maxHp += hp;
             Stats.HP += hp;
             Debug.Log(Stats.HP);
         }
