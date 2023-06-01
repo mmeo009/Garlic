@@ -9,7 +9,6 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-
         switch(this.gameObject.tag)
         {
             case "Item_1":

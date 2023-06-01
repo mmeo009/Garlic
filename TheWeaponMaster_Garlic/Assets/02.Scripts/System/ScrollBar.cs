@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScrollBar : PlayerController
+public class ScrollBar : MonoBehaviour
 {
     public float maxHpVal;
     public float maxSteVal = 20.0f;
@@ -15,15 +12,16 @@ public class ScrollBar : PlayerController
     public GameObject creature;
     void Start()
     {
-
+        maxSteVal = 20.0f;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        maxHpVal = maxHp;
-        nowHpVal = Stats.HP;
-        nowSteVal = dashTime;
+        maxHpVal = creature.GetComponent<PlayerController>().maxHp;
+        nowHpVal = creature.GetComponent<PlayerController>().nowHp;
+        nowSteVal = creature.GetComponent<PlayerController>().dashTime;
+    }
+    void FixedUpdate()
+    {
         if (creature != null)
         {
             hpImage.fillAmount = nowHpVal / maxHpVal;

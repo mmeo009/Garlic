@@ -5,12 +5,14 @@ public class PlayerController : CreatureStats
     public GameObject cam;
     float h, v;
     Vector3 moveDir;
-    public float dashTime = 20.0f;
+    public float dashTime;
     [SerializeField]
     float nowSpeed;
     [SerializeField]
     bool isDash = false;
+    bool cantDash = false;
     public int maxHp = 5;
+    public int nowHp;
     private void Start()
     {
         StatSetting(5, 5.0f, 10.0f, 5.0f, 0);
@@ -18,6 +20,14 @@ public class PlayerController : CreatureStats
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         nowSpeed = Stats.MoveSpeed;
+        nowHp = Stats.HP;
+    }
+    private void FixedUpdate()
+    {
+        if(this.transform.position.y <= -3)
+        {
+            this.transform.position = new Vector3(0, 2, 0);
+        }
     }
     void Update()
     {
@@ -38,22 +48,30 @@ public class PlayerController : CreatureStats
             {
                 nowSpeed = Stats.MoveSpeed;
                 isDash= false;
+                cantDash = true;
             }
         }
         if (dashTime < 20.0f)
         {
-            if (!Input.GetKey(KeyCode.LeftShift))
+            if (!Input.GetKey(KeyCode.LeftShift) && (isDash == false || cantDash == false))
             {
                 nowSpeed = Stats.MoveSpeed;
                 dashTime += Time.deltaTime;
             }
         }
+        transform.Translate(moveDir.normalized * nowSpeed * Time.deltaTime, Space.Self);
+    }
+    private void LateUpdate()
+    {
+        nowHp = Stats.HP;
         if (dashTime < 0)
         {
             dashTime = 0;
         }
-
-        transform.Translate(moveDir.normalized * nowSpeed * Time.deltaTime, Space.Self);
+        if (dashTime >= 20.0f)
+        {
+            dashTime = 20.0f;
+        }
     }
 
     public void GetDMG(int dmg)
@@ -83,9 +101,16 @@ public class PlayerController : CreatureStats
         }
         else if (type == 3)
         {
-            maxHp += hp;
-            Stats.HP += hp;
-            Debug.Log(Stats.HP);
+            if (Stats.HP == maxHp)
+            {
+                Stats.HP += hp;
+                maxHp += hp;
+            }
+            else
+            {
+                Stats.HP += hp;
+            }
+            Debug.Log("최대 : " + maxHp + "/ 지금 :" + Stats.HP);
         }
     }
 }

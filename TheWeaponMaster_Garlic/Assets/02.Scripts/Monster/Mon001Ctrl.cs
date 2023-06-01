@@ -8,6 +8,7 @@ public class Mon001Ctrl : MonsterController
 
     public GameObject me;
     public GameObject hands;
+    public GameObject system;
     public Transform player;
     public Rigidbody rb;
 
@@ -23,6 +24,7 @@ public class Mon001Ctrl : MonsterController
         rb = GetComponent<Rigidbody>();
         me = this.gameObject;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        system = GameObject.Find("System");
         sequenceLoop = DOTween.Sequence();
     }
     void Update()
