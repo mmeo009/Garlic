@@ -62,7 +62,7 @@ public class Mon001Ctrl : MonsterController
                 StartAttack();
             }
         }
-        if (Vector3.Distance(hands.transform.position, transform.position) >= 1)
+        if (Vector3.Distance(hands.transform.position, transform.position) >= 2)
         {
             if (areHandsMoves == false)
                 HandQuickBack();

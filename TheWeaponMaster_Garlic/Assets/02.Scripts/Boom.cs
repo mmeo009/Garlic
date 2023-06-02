@@ -22,8 +22,8 @@ public class Boom : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //  시간이 지나면 이 오브젝트를 삭제한다.
         time -= Time.deltaTime;
-
         if(time <= 0)
             Destroy(this.gameObject);
     }

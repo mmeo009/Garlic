@@ -225,8 +225,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5660391, z: 0.8534805}
-  m_Center: {x: 0, y: -0.21698046, z: 0.41066805}
+  m_Size: {x: 1, y: 0.9687228, z: 0.6989952}
+  m_Center: {x: 0, y: -0.01563859, z: 0.33342537}
 --- !u!1 &5503452220898366242
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,11 +387,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9c2c22993d208438c3145e344db683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
+  item001: {fileID: 0}
+  item002: {fileID: 0}
+  item003: {fileID: 0}
   time: 4
   areHandsMoves: 0
   me: {fileID: 0}
-  hands: {fileID: 0}
+  hands: {fileID: 5503452220427099636}
+  system: {fileID: 0}
   player: {fileID: 0}
   rb: {fileID: 0}
   targetDiraction: {x: 0, y: 0, z: 0}

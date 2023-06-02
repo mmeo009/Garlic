@@ -9,22 +9,8 @@ public class MonsterCheck : MonoBehaviour
     public float birdSpawnTime;
     private Object[] monster;
     public GameObject monster1, monster2, monster3, monster4;
-    private int lv;
-    void Start()
+    void Awake()
     {
-        switch (this.gameObject.tag)
-        {
-            case "Lv_1":
-                lv = 0;
-                break;
-            case "Lv_2":
-                lv = 1;
-                break;
-            case "Lv_3":
-                lv = 2;
-                break;
-        }
-        Difficulty(lv);
         monster = Resources.LoadAll("monster");
         for (int i = 0; i < monster.Length; i++)
         {
@@ -45,18 +31,34 @@ public class MonsterCheck : MonoBehaviour
             }
         }
     }
+    void Start()
+    {
+        switch (this.gameObject.tag)
+        {
+            case "Lv_1":
+                difficulty = 0;
+                break;
+            case "Lv_2":
+                difficulty = 1;
+                break;
+            case "Lv_3":
+                difficulty = 2;
+                break;
+        }
+        Difficulty(difficulty);
+        GarlicSpawn(maxAmount);
+    }
     private void Update()
     {
         birdSpawnTime -= Time.deltaTime;
         if (birdSpawnTime < 0)
         {
-            BirdSpawn();
+            BirdSpawn(difficulty + 2);
             birdSpawnTime = 10.0f;
         }
     }
     void Difficulty(int lv)
     {
-        difficulty = lv;
         switch (difficulty)
         {
             case 0:
@@ -73,12 +75,40 @@ public class MonsterCheck : MonoBehaviour
                 break;
         }
     }
-    void BirdSpawn()
+    void BirdSpawn(int birds)
     {
-
+        while (birds > 0)
+        {
+            int spawnX = Random.Range(-250, 250);
+            int spawnY = Random.Range(-250, 250);
+            int whichBird = Random.Range(0, 2);
+            GameObject B1 = (GameObject)Instantiate(monster2);
+            GameObject B2 = (GameObject)Instantiate(monster3);
+            GameObject B3 = (GameObject)Instantiate(monster4);
+            switch (whichBird)
+            {
+                case 0:
+                    B1.transform.position = new Vector3(spawnX, 1, spawnY);
+                    break;
+                case 1:
+                    B2.transform.position = new Vector3(spawnX, 1, spawnY);
+                    break;
+                case 2:
+                    B3.transform.position = new Vector3(spawnX, 1, spawnY);
+                    break;
+            }
+            birds--;
+        }
     }
-    void GarlicSpawn()
+    void GarlicSpawn(int howMany)
     {
+        for (int i = 0; i < 10; i++)
+        {
+            int spawnX = Random.Range(-250, 250);
+            int spawnY = Random.Range(-250, 250);
 
+            GameObject temp = (GameObject)Instantiate(monster1);
+            temp.transform.position = new Vector3(spawnX, 1, spawnY);
+        }
     }
 }

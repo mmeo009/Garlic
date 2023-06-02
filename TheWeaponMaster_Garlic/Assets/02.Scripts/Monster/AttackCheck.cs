@@ -13,6 +13,7 @@ public class AttackCheck : MonoBehaviour
             if (other.gameObject.tag == "Monster")
             {
                 me = other.gameObject;
+                me.GetComponent<Mon001Ctrl>().hands = this.gameObject;
             }
         }
         else
