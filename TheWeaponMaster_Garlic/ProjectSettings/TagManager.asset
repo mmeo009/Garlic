@@ -14,6 +14,8 @@ TagManager:
   - Lv_1
   - Lv_2
   - Lv_3
+  - 0
+  - 1
   layers:
   - Default
   - TransparentFX

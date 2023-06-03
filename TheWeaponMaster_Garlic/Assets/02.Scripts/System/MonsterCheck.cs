@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MonsterCheck : MonoBehaviour
 {
@@ -57,6 +58,17 @@ public class MonsterCheck : MonoBehaviour
             birdSpawnTime = 10.0f;
         }
     }
+    public void AmountChack()
+    {
+        if(amount < maxAmount)
+        {
+            amount--;
+        }
+        if(amount <= maxAmount)
+        {
+            End();
+        }
+    }
     void Difficulty(int lv)
     {
         switch (difficulty)
@@ -82,18 +94,18 @@ public class MonsterCheck : MonoBehaviour
             int spawnX = Random.Range(-250, 250);
             int spawnY = Random.Range(-250, 250);
             int whichBird = Random.Range(0, 2);
-            GameObject B1 = (GameObject)Instantiate(monster2);
-            GameObject B2 = (GameObject)Instantiate(monster3);
-            GameObject B3 = (GameObject)Instantiate(monster4);
             switch (whichBird)
             {
                 case 0:
+                    GameObject B1 = (GameObject)Instantiate(monster2);
                     B1.transform.position = new Vector3(spawnX, 1, spawnY);
                     break;
                 case 1:
+                    GameObject B2 = (GameObject)Instantiate(monster3);
                     B2.transform.position = new Vector3(spawnX, 1, spawnY);
                     break;
                 case 2:
+                    GameObject B3 = (GameObject)Instantiate(monster4);
                     B3.transform.position = new Vector3(spawnX, 1, spawnY);
                     break;
             }
@@ -110,5 +122,9 @@ public class MonsterCheck : MonoBehaviour
             GameObject temp = (GameObject)Instantiate(monster1);
             temp.transform.position = new Vector3(spawnX, 1, spawnY);
         }
+    }
+    public void End()
+    {
+        SceneManager.LoadScene("End");
     }
 }

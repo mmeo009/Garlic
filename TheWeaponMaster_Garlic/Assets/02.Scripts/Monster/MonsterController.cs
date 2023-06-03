@@ -4,13 +4,23 @@ using UnityEngine;
 public class MonsterController : CreatureStats
 {
     public GameObject item001, item002, item003;
+    public GameObject System;
+    public int type;
+
     private void Awake()
     {
-        int type = Stats.CreatureType;
-        Debug.Log(type);
         item001 = Resources.Load("HP") as GameObject;
         item002 = Resources.Load("DMG") as GameObject;
         item003 = Resources.Load("SPEED") as GameObject;
+        System = GameObject.Find("System");
+        type = Stats.CreatureType;
+    }
+    void Update()
+    {
+        if (this.transform.position.y <= -3)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void GetDmg(int dmg)
@@ -18,6 +28,10 @@ public class MonsterController : CreatureStats
         Stats.HP -= dmg;
         if (Stats.HP <= 0)
         {
+            if (type == 1)
+            {
+                System.GetComponent<MonsterCheck>().AmountChack();
+            }
             Destroy(this.gameObject);
 
             switch (Stats.CreatureType)

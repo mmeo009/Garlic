@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 425838053}
   m_Layer: 0
   m_Name: System
-  m_TagString: Lv_1
+  m_TagString: Lv_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -995,16 +995,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7317342450269315401, guid: 2e7a2c09269dbb7489df534cfdffce9c, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0.105882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317342450269315401, guid: 2e7a2c09269dbb7489df534cfdffce9c, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0
+      value: 0.79022217
       objectReference: {fileID: 0}
     - target: {fileID: 7317342450269315401, guid: 2e7a2c09269dbb7489df534cfdffce9c, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0
+      value: 0.64705884
       objectReference: {fileID: 0}
     - target: {fileID: 7317342450269315401, guid: 2e7a2c09269dbb7489df534cfdffce9c, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7317342451789297760, guid: 2e7a2c09269dbb7489df534cfdffce9c, type: 3}
       propertyPath: m_Name
