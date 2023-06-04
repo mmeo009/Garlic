@@ -28,7 +28,7 @@ public class MonsterController : CreatureStats
         Stats.HP -= dmg;
         if (Stats.HP <= 0)
         {
-            if (type == 1)
+            if (Stats.CreatureType == 1)
             {
                 System.GetComponent<MonsterCheck>().AmountChack();
             }

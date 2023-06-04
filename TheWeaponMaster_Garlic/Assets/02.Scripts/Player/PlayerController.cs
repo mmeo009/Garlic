@@ -13,12 +13,17 @@ public class PlayerController : CreatureStats
     bool cantDash = false;
     public int maxHp = 5;
     public int nowHp;
+    public AudioClip fire1Sfx;
+    public AudioClip fire2Sfx;
+    public AudioClip stepSfx;
+    public AudioClip hitSfx;
+    public new AudioSource audio;
     private void Start()
     {
         StatSetting(5, 5.0f, 10.0f, 5.0f, 0);
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        audio = GetComponent<AudioSource>();
         nowSpeed = Stats.MoveSpeed;
         nowHp = Stats.HP;
     }
@@ -74,12 +79,14 @@ public class PlayerController : CreatureStats
         }
     }
 
+
     public void GetDMG(int dmg)
     {
         Stats.HP -= dmg;
         if (Stats.HP <= 0)
         {
             Destroy(this.gameObject);
+            audio.PlayOneShot(hitSfx, 15.0f);
         }
         Debug.Log(Stats.HP);
         //cam.GetComponent<CamController>().Knock(dmg);

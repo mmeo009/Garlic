@@ -5,7 +5,7 @@ public class MonsterCheck : MonoBehaviour
 {
     public int difficulty;
     public int maxAmount;
-    public int amount;
+    public int amount = 0;
     public int kill;
     public float birdSpawnTime;
     private Object[] monster;
@@ -62,12 +62,13 @@ public class MonsterCheck : MonoBehaviour
     {
         if(amount < maxAmount)
         {
-            amount--;
+            amount++;
         }
-        if(amount <= maxAmount)
+        if(amount >= maxAmount)
         {
             End();
         }
+        Debug.Log(amount);
     }
     void Difficulty(int lv)
     {
@@ -93,7 +94,7 @@ public class MonsterCheck : MonoBehaviour
         {
             int spawnX = Random.Range(-250, 250);
             int spawnY = Random.Range(-250, 250);
-            int whichBird = Random.Range(0, 2);
+            int whichBird = Random.Range(0, 3);
             switch (whichBird)
             {
                 case 0:

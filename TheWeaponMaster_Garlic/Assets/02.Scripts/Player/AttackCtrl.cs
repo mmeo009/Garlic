@@ -10,8 +10,6 @@ public class AttackCtrl : PlayerController
     public int dmg = 2;
     public bool isAttack;
     public Ray ray;
-    public AudioClip fire1Sfx;
-    new AudioSource audio;
     public Vector3 targetPosition;
     public Vector3 targetPosition2;
     public Vector3 type2P;
@@ -43,7 +41,7 @@ public class AttackCtrl : PlayerController
             {
                 Ray cast = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                audio.PlayOneShot(fire1Sfx, 3.0f);
+                GetComponent<AudioSource>().PlayOneShot(fire1Sfx, 8.0f);
                 if (Physics.Raycast(cast, out hit))
                 {
                     if (hit.collider.tag == "Monster")
@@ -57,6 +55,7 @@ public class AttackCtrl : PlayerController
             {
                 if (isAttack == false)
                 {
+                    GetComponent<AudioSource>().PlayOneShot(fire2Sfx, 8.0f);
                     SwordAttack();
                     isAttack = true;
                 }

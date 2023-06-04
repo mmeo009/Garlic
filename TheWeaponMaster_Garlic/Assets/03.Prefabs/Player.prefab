@@ -271,6 +271,13 @@ MonoBehaviour:
   dashTime: 30
   nowSpeed: 0
   isDash: 0
+  maxHp: 5
+  nowHp: 0
+  fire1Sfx: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+  fire2Sfx: {fileID: 8300000, guid: a58e438b7cfa445498120af0e6169082, type: 3}
+  stepSfx: {fileID: 8300000, guid: 451189538132149478c23376d566fd1e, type: 3}
+  hit: {fileID: 8300000, guid: 41b179a8212232343b614ca178d934d3, type: 3}
+  audio: {fileID: 0}
 --- !u!136 &7317342451789297763
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -301,6 +308,13 @@ MonoBehaviour:
   dashTime: 20
   nowSpeed: 0
   isDash: 0
+  maxHp: 5
+  nowHp: 0
+  fire1Sfx: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+  fire2Sfx: {fileID: 8300000, guid: a58e438b7cfa445498120af0e6169082, type: 3}
+  stepSfx: {fileID: 0}
+  hit: {fileID: 0}
+  audio: {fileID: 0}
   monster: {fileID: 0}
   hand: {fileID: 7317342451647423235}
   type1: {fileID: 7587727412625765870}
@@ -309,7 +323,6 @@ MonoBehaviour:
   maxRange: 0
   dmg: 2
   isAttack: 0
-  fire1Sfx: {fileID: 8300000, guid: a245ee5d75348c84a89ffb7992f1dc82, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
   targetPosition2: {x: 0, y: 0, z: 0}
   type2P: {x: 0, y: 0, z: 0}
