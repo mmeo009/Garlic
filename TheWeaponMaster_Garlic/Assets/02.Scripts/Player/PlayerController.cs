@@ -85,10 +85,10 @@ public class PlayerController : CreatureStats
         Stats.HP -= dmg;
         if (Stats.HP <= 0)
         {
-            Destroy(this.gameObject);
-            audio.PlayOneShot(hitSfx, 15.0f);
+            Application.Quit();
         }
         Debug.Log(Stats.HP);
+        audio.PlayOneShot(hitSfx, 15.0f);
         //cam.GetComponent<CamController>().Knock(dmg);
     }
     public void StatPlus(int type, float p, int hp)

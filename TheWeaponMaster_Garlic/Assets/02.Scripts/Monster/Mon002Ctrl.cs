@@ -25,7 +25,6 @@ public class Mon002Ctrl : MonsterController
             Quaternion targetRotation = Quaternion.LookRotation(targetDiraction);
 
             if (Vector3.Distance(player.position, transform.position) > 1)
-            //Vecter3.Distance (거리를 알려주는 함수)
             {
                 Vector3 direction = (player.position - transform.position).normalized;
                 rb.MovePosition(transform.position + direction * Stats.MoveSpeed * Time.deltaTime);
