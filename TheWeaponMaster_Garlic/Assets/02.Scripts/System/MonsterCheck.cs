@@ -115,7 +115,7 @@ public class MonsterCheck : MonoBehaviour
     }
     void GarlicSpawn(int howMany)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < howMany; i++)
         {
             int spawnX = Random.Range(-250, 250);
             int spawnY = Random.Range(-250, 250);
